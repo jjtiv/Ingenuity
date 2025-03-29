@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage!</title>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <a href="step.html">Enter</a>
+    <a href="dark.html">Dark</a>
+    
+    <h3 id="puzzle1-status"></h3>
+    <h3 id="puzzle2-status"></h3>
+    <h3 id="puzzle3-status"></h3>
+    <h3 id="puzzle4-status"></h3>
+    <h3 id="puzzle5-status"></h3>
 
 
+    <button onclick="completePuzzle('puzzle1')">Pzl1</button>
+    <button onclick="completePuzzle('puzzle2')">Pzl2</button>
+
+    <button onclick="resetGame()">Reset Game</button>
 
     <script src="index.js"></script>
 </body>
