@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Don't Move the Mouse!</title>
+    <style>
+        body {
+            background-color: darkred;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+        }
+        .distraction {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Don't Move the Mouse!</h1>
+    <script>
+        let lastMouseX, lastMouseY;
+        let gameOver = false;
+        let occupiedSpaces = [];
+        
+        
+        
+        function isOverlapping(x, y) {
+            return occupiedSpaces.some(space => 
+                Math.abs(space.x - x) < 300 && Math.abs(space.y - y) < 300
+            );
+        }
+        
+        function spawnDistractions() {
+            if (gameOver) return;
+            let x, y;
+            let attempts = 0;
+            do {
+                x = Math.random() * (window.innerWidth - 300);
+                y = Math.random() * (window.innerHeight - 300);
+                attempts++;
+            } while (isOverlapping(x, y) && attempts < 10);
+            
+            if (attempts >= 10) return; // Prevent infinite loops
+            
+            const img = document.createElement("img");
+            const imgUrl = "https://picsum.photos/300/300?random=" + Math.random();
+            img.src = imgUrl;
+            img.className = "distraction";
+            img.style.top = y + "px";
+            img.style.left = x + "px";
+            img.addEventListener("click", (event) => {
+                window.open(imgUrl, "_blank");
+                document.body.removeChild(event.target);
+                occupiedSpaces = occupiedSpaces.filter(space => !(space.x === x && space.y === y));
+                setTimeout(spawnDistractions, 500); // Restart spawning after image removal
+            });
+            document.body.appendChild(img);
+            occupiedSpaces.push({ x, y });
+            setTimeout(spawnDistractions, 2000);
+        }
+        
+        spawnDistractions();
+    </script>
+    <script src="temp.js"></script>
 </body>
 </html>

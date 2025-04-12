@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(92, 9, 9);
+    font-family: 'Poppins', sans-serif;
+    color: #ddd;
+}
+
+.active {
+    width: 80%;
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+#puzzle-sheet, #answerDiv {
+
+    width: 60%;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    background: rgba(51, 51, 51, 0.493);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#puzzle-sheet {
+    margin-bottom: 20px;
+}
+
+#answerDiv a {
+    color: #ddd;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 20px;
+    font-weight: 400;
+    display: block;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+a:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: #000;
+    transform: scale(1.05);
+}
